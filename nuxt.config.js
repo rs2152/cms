@@ -40,6 +40,15 @@ export default {
   modules: [
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
+    ['nuxt-fontawesome', {
+      component: 'fa',
+      imports: [
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['faDollarSign']
+        }
+      ]
+    }],
   ],
   /*
   ** Build configuration

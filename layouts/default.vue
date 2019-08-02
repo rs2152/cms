@@ -48,12 +48,9 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-         <a class="button">
-    <span class="icon">
-      <i class="fab fa-github"></i>
-    </span>
-    <span>GitHub</span>
-  </a>
+        <b-button icon-left="github-circle">
+                Logout
+            </b-button>
       </div>
     </div>
   </div>
@@ -61,49 +58,6 @@
 
     <section class="main-content columns">
       <aside class="column is-2 section">
-      
-    <b-menu>
-        <b-menu-list label="Menu">
-            <b-menu-item icon="information-outline" label="Info"></b-menu-item>
-            <b-menu-item icon="settings" active expanded>
-                <template slot="label" slot-scope="props">
-                    Administrator
-                    <b-icon
-                        class="is-pulled-right"
-                        :icon="props.expanded ? 'menu-down' : 'menu-up'">
-                    </b-icon>
-                </template>
-                <b-menu-item   v-for="(item, key) of items"
-            :key="key" :icon="item.icon" :label="item.to.name" :to="item.to" tag="nuxt-link"></b-menu-item>
-                <b-menu-item icon="cellphone-link" label="Devices"></b-menu-item>
-                <b-menu-item icon="cash-multiple" label="Payments" disabled></b-menu-item>
-            </b-menu-item>
-            <b-menu-item icon="account" label="My Account">
-                <b-menu-item label="Account data"></b-menu-item>
-                <b-menu-item label="Addresses"></b-menu-item>
-            </b-menu-item>
-        </b-menu-list>
-        <b-menu-list>
-            <b-menu-item  v-for="(item, key) of items"
-            :key="key"
-                :label="item.to.name"
-                :icon="item.icon"
-                tag="nuxt-link"
-                :to="item.to">
-            </b-menu-item>
-        </b-menu-list>
-        <b-menu-list label="Actions">
-            <b-menu-item  v-for="(item, key) of items"
-            :key="key"
-                :label="item.to.name"
-                :icon="item.icon"
-                tag="nuxt-link"
-                :to="item.to">
-            </b-menu-item>
-        </b-menu-list>
-    </b-menu>
-
-
         <p class="menu-label is-hidden-touch">
           General
         </p>
@@ -135,19 +89,19 @@ export default {
     return {
       items: [
         {
-          title: 'Home',
+          title: 'Dashboard',
           icon: 'home',
-          to: { name: 'index' }
+          to: { name: 'dashboard' }
         },
         {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
+          title:'Students',
+          icon:'child',
+          to:{name:'students'}
         },
         {
-          title:'nitesh',
+          title:'Teachers',
           icon:'lightbulb',
-          to:{name:'nitesh'}
+          to:{name:'teachers'}
         }
       ]
     }
