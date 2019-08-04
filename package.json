@@ -14,10 +14,16 @@
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-brands-svg-icons": "^5.10.1",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
+    "@nuxtjs/axios": "^5.5.4",
+    "chart.js": "^2.8.0",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2",
-    "nuxt-fontawesome": "^0.4.0"
+    "nuxt-fontawesome": "^0.4.0",
+    "vue-chartjs": "^3.4.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

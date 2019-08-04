@@ -7,7 +7,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
           <ul>
             <li>
-              <a href="#">Admin<fa :icon="['fas', 'dollar-sign']" /></a>
+              <a href="#">Admin</a>
             </li>
             <li>
               <a href="#">Teachers</a>
@@ -23,28 +23,17 @@
               :to="{name:'teachers-add_teacher'}"
               exact-active-class="is-active"
             >
-            Add A Teacher
+            <font-awesome-icon :icon="['fas','plus-circle']"/>&nbsp; Add A Teacher
             </nuxt-link>
            </div>
         </div>
       </div>
-
-    <b-field grouped group-multiline>
-      <div class="control">
-        <b-switch v-model="showDetailIcon">Show detail icon</b-switch>
-      </div>
-    </b-field>
 
     <b-table
       :data="data"
       ref="table"
       paginated
       per-page="12"
-      :opened-detailed="defaultOpenedDetails"
-      detailed
-      detail-key="id"
-      @details-open="(row, index) => $toast.open(`Expanded ${row.user.first_name}`)"
-      :show-detail-icon="showDetailIcon"
       aria-next-label="Next page"
       aria-previous-label="Previous page"
       aria-page-label="Page"
@@ -52,14 +41,6 @@
     >
       <template slot-scope="props">
         <b-table-column field="id" label="ID" width="40" numeric>{{ props.row.id }}</b-table-column>
-
-        <b-table-column field="user.first_name" label="First Name" sortable>
-          <template v-if="showDetailIcon">{{ props.row.user.first_name }}</template>
-          <template v-else>
-            <a @click="toggle(props.row)">{{ props.row.user.first_name }}</a>
-          </template>
-        </b-table-column>
-
         <b-table-column
           field="user.last_name"
           label="Last Name"
@@ -74,28 +55,24 @@
           <b-icon pack="fa" :icon="props.row.gender === 'Male' ? 'mars' : 'venus'"></b-icon>
           {{ props.row.gender }}
         </b-table-column>
-      </template>
+        <b-table-column field="Action" label="Action" width="40" numeric><div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+        </a>
 
-      <template slot="detail" slot-scope="props">
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="/static/img/placeholder-128x128.png" />
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>{{ props.row.user.first_name }} {{ props.row.user.last_name }}</strong>
-                <small>@{{ props.row.user.first_name }}</small>
-                <small>31m</small>
-                <br />Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Proin ornare magna eros, eu pellentesque tortor vestibulum ut.
-                Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-              </p>
-            </div>
-          </div>
-        </article>
+        <div class="navbar-dropdown">
+          <nuxt-link :to="'teachers/'+`${props.row.id}`" class="navbar-item">
+            Edit
+          </nuxt-link>
+          <a class="navbar-item">
+            Delete
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+  </b-table-column>
       </template>
     </b-table>
   </section>
@@ -199,14 +176,7 @@ export default {
   data() {
     return {
       data,
-      defaultOpenedDetails: [1],
-      showDetailIcon: true
     };
-  },
-  methods: {
-    toggle(row) {
-      this.$refs.table.toggleDetails(row);
-    }
   }
 };
 </script>

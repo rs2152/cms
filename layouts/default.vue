@@ -48,7 +48,8 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <b-button icon-left="github-circle">
+        <b-button>
+          <font-awesome-icon :icon="['fas', 'user']"/>
                 Logout
             </b-button>
       </div>
@@ -70,7 +71,8 @@
               :to="item.to"
               exact-active-class="is-active"
             >
-              <b-icon :icon="item.icon" /> {{ item.title }}
+           <font-awesome-icon :icon="item.icon"/>
+               &nbsp;&nbsp;{{ item.title }}
             </nuxt-link>
           </li>
         </ul>
@@ -90,17 +92,17 @@ export default {
       items: [
         {
           title: 'Dashboard',
-          icon: 'home',
+          icon: ['fas', 'tachometer-alt'],
           to: { name: 'dashboard' }
         },
         {
           title:'Students',
-          icon:'child',
+          icon:['fas', 'user-graduate'],
           to:{name:'students'}
         },
         {
           title:'Teachers',
-          icon:'lightbulb',
+          icon:['fas', 'chalkboard-teacher'],
           to:{name:'teachers'}
         }
       ]

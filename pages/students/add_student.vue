@@ -22,7 +22,7 @@
             class="button is-primary"
             :to="{name:'students'}"
             exact-active-class="is-active"
-          >Back</nuxt-link>
+          ><font-awesome-icon :icon="['fas','arrow-circle-left']"/>&nbsp; Back</nuxt-link>
         </div>
       </div>
     </div>
