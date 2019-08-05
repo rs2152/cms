@@ -18,22 +18,37 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      token: ""
     };
   },
   methods: {
     applogin() {
-      const qs = require('qs');
+      let fd = new FormData();
+      fd.append("username", this.username);
+      fd.append("password", this.password);
       this.$axios
-        .post("http://b0214717.ngrok.io/login", qs.stringify({
-          'username':this.username,
-          'password':this.password
-        }))
+        .post("http://39c5001e.ngrok.io/login", fd)
         .then(response => {
-          alert("message sent!");
+          this.response = response.data;
+          if (response.data.status == 200) {
+            this.$router.push("dashboard");
+            this.$buefy.toast.open({
+              duration: 3000,
+              message: "Login Successfully",
+              type: "is-success"
+            });
+          } else {
+            this.$buefy.toast.open({
+              duration: 5000,
+              message: `Please Enter Correct Username and Password`,
+              position: "is-bottom",
+              type: "is-danger"
+            });
+          }
         })
         .catch(error => {
-          alert(error);
+          console.log(error);
         });
     }
   }
@@ -68,7 +83,7 @@ body {
   border: 1px solid #42464b;
   border-radius: 6px;
   height: 257px;
-  margin: 20px auto 0;
+  margin: 17em auto 0;
   width: 298px;
 }
 .login h1 {
